@@ -1,34 +1,31 @@
-package net.starlegacy.spacecandy;
+package net.starlegacy.nethersky;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.WorldClient;
-import net.minecraft.client.resources.LanguageManager;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.World;
-import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.client.IRenderHandler;
-import net.minecraftforge.event.world.ChunkEvent;
 import net.minecraftforge.event.world.WorldEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.starlegacy.spacecandy.spacerenderer.ISpaceRenderer;
-import net.starlegacy.spacecandy.spacerenderer.SkyboxSpaceRenderer;
+import net.starlegacy.nethersky.skyrenderer.ISkyRenderer;
+import net.starlegacy.nethersky.skyrenderer.SkyboxSkyRenderer;
 import org.jline.utils.Log;
 
 import static net.minecraft.client.Minecraft.getMinecraft;
 
-@Mod(modid = "spacecandy", name = "SpaceCandy", version = "3.0.1")
+@Mod(modid = "nethersky", name = "NetherSky", version = "1.0.0")
 @Mod.EventBusSubscriber
-public class SpaceCandy {
-    private static ISpaceRenderer spaceRenderer;
+public class NetherSky {
+    private static ISkyRenderer skyRenderer;
 
     @Mod.EventHandler
     public void init(FMLInitializationEvent event) {
-        DimensionType.THE_END.clazz = CandyWorldProvider.class;
-        spaceRenderer = new SkyboxSpaceRenderer();
+        DimensionType.NETHER.clazz = CandyWorldProvider.class;
+        skyRenderer = new SkyboxSkyRenderer();
     }
 
     @Mod.EventHandler
@@ -44,11 +41,11 @@ public class SpaceCandy {
     public static void worldLoad(WorldEvent.Load event) {
         World world = event.getWorld();
 
-        if (world.isRemote && world.provider.getDimensionType() == DimensionType.THE_END) {
+        if (world.isRemote && world.provider.getDimensionType() == DimensionType.NETHER) {
             world.provider.setSkyRenderer(new IRenderHandler() {
                 @Override
                 public void render(float partialTicks, WorldClient world, Minecraft mc) {
-                    spaceRenderer.render();
+                    skyRenderer.render();
                 }
             });
         }

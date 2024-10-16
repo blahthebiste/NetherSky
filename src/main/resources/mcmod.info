@@ -1,12 +1,13 @@
 [
   {
-    "modid": "spacecandy",
-    "name": "Space Candy",
-    "description": "Optional visual enhancement and performance optimization Forge mod for Star Legacy (https://www.starlegacy.net) ",
+    "modid": "nethersky",
+    "name": "Nether Sky",
+    "description": "Fork of Star Legacy (https://www.starlegacy.net) which applies a custom skybox to the Nether",
     "version": "${version}",
-    "url": "https://github.com/Miclebrick/SpaceCandy",
+    "url": "https://github.com/blahthebiste/NetherSky",
     "updateUrl": "https://github.com/Miclebrick/SpaceCandy/releases",
     "authorList": [
+      "lumberjacksparrow",
       "MicleBrick",
       "Contributors"
     ],

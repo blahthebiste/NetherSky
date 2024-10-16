@@ -1,4 +1,4 @@
-package net.starlegacy.spacecandy.spacerenderer;
+package net.starlegacy.nethersky.skyrenderer;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.BufferBuilder;
@@ -10,18 +10,18 @@ import net.minecraft.util.ResourceLocation;
 
 import static net.minecraft.client.Minecraft.getMinecraft;
 
-public class SkyboxSpaceRenderer implements ISpaceRenderer {
+public class SkyboxSkyRenderer implements ISkyRenderer {
     private Minecraft mc;
-    private ResourceLocation[] SPACE_TEXTURES = new ResourceLocation[6];
+    private ResourceLocation[] SKY_TEXTURES = new ResourceLocation[6];
 
-    public SkyboxSpaceRenderer() {
+    public SkyboxSkyRenderer() {
         this.mc = getMinecraft();
-        SPACE_TEXTURES[0] = new ResourceLocation("spacecandy", "textures/environment/space_down.png");
-        SPACE_TEXTURES[1] = new ResourceLocation("spacecandy", "textures/environment/space_front.png");
-        SPACE_TEXTURES[2] = new ResourceLocation("spacecandy", "textures/environment/space_back.png");
-        SPACE_TEXTURES[3] = new ResourceLocation("spacecandy", "textures/environment/space_up.png");
-        SPACE_TEXTURES[4] = new ResourceLocation("spacecandy", "textures/environment/space_left.png");
-        SPACE_TEXTURES[5] = new ResourceLocation("spacecandy", "textures/environment/space_right.png");
+        SKY_TEXTURES[0] = new ResourceLocation("nethersky", "textures/environment/nether_down.png");
+        SKY_TEXTURES[1] = new ResourceLocation("nethersky", "textures/environment/nether_front.png");
+        SKY_TEXTURES[2] = new ResourceLocation("nethersky", "textures/environment/nether_back.png");
+        SKY_TEXTURES[3] = new ResourceLocation("nethersky", "textures/environment/nether_up.png");
+        SKY_TEXTURES[4] = new ResourceLocation("nethersky", "textures/environment/nether_left.png");
+        SKY_TEXTURES[5] = new ResourceLocation("nethersky", "textures/environment/nether_right.png");
     }
 
     @Override
@@ -36,7 +36,7 @@ public class SkyboxSpaceRenderer implements ISpaceRenderer {
         BufferBuilder bufferbuilder = tessellator.getBuffer();
 
         for (int i = 0; i < 6; ++i) {
-            mc.getTextureManager().bindTexture(SPACE_TEXTURES[i]);
+            mc.getTextureManager().bindTexture(SKY_TEXTURES[i]);
             GlStateManager.pushMatrix();
 
             if (i == 1) {
